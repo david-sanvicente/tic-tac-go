@@ -1,24 +1,19 @@
+import React, { ReactElement } from 'react'
 import { StyleSheet, View } from 'react-native';
-import {Game, Home} from "./screens"
-import {useFonts, Dokdo_400Regular} from "@expo-google-fonts/dokdo"
-import AppLoading from "expo-app-loading"
-import Text from "./components/text/text"
+import { Text, AppBootstrap } from "./components/"
 
-export default function App() {
-    const [fontLoaded] = useFonts({
-        Dokdo_400Regular
-    })
-    if(!fontLoaded) return <AppLoading/>
-
+export default function App(): ReactElement {
   return (
-    <View style={styles.container}>
-      <Text 
-        onPress={()=>{alert(true)}} 
-        style={{fontSize:40}}
+    <AppBootstrap>
+      <View style={styles.container}>
+        <Text
+          onPress={() => { alert(true) }}
+          style={{ fontSize: 40 }}
         >
-            Hello world!!!
-      </Text>
-    </View>
+          Hello world!!
+        </Text>
+      </View>
+    </AppBootstrap>
   );
 }
 
