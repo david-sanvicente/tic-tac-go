@@ -1,4 +1,5 @@
 import { BoardState } from '../utils'
+import {Moves} from '../utils/types'
 
 export const printFormattedBoard = (state: BoardState): void => {
   let formattedString = "\n";
@@ -13,3 +14,23 @@ export const printFormattedBoard = (state: BoardState): void => {
   });
   console.log(formattedString);
 }; 
+
+export const isEmpty = (state: BoardState): boolean => {
+  return state.every(cell => {
+    return cell === null
+  })
+}
+
+export const isFull = (state: BoardState): boolean => {
+  return state.every(cell => cell)
+}
+
+export const getAvailableMoves = (state: BoardState): Moves[] => {
+  const moves: Moves[] = []
+
+  state.forEach((cell, idx)=>{
+    if(cell === null) moves.push(idx as Moves)
+  })
+
+  return moves
+}
