@@ -4,16 +4,20 @@ import styles from "./single-player-game.styles"
 import { GradientBackground } from "../../components"
 import { Board } from "../../components"
 import Text from "../../components/text/text"
-import { printFormattedBoard, isEmpty, isFull, getAvailableMoves, isTerminal, BoardState } from '../../utils'
+import { getBestMove, printFormattedBoard, isEmpty, isFull, getAvailableMoves, isTerminal, BoardState } from '../../utils'
 // import { printFormattedBoard } from "../../utils"
 
 export default function Game(): ReactElement {
   const [state, setState] = useState<BoardState>(
-    [null, null, null, null, null, null, null, null, null,]
-  )
+    [
+      null, 'x', null,
+      'o', null, 'x',
+      'o', 'o', 'x',
+    ])
 
-  printFormattedBoard(state);
-  console.log(isTerminal(state))
+  console.log('getBestMove', getBestMove(state, true))
+  // printFormattedBoard(state);
+  // console.log(isTerminal(state))
 
   const handleOnCellPressed = (cell: number): void => {
     const stateCopy: BoardState = [...state]
