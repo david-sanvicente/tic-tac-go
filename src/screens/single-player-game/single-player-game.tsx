@@ -10,7 +10,7 @@ import { getBestMove, printFormattedBoard, isEmpty, isFull, getAvailableMoves, i
 export default function Game(): ReactElement {
   const [state, setState] = useState<BoardState>(
     [
-      null, 'x', null,
+      null, null, null,
       'o', null, 'x',
       'o', 'o', 'x',
     ])
