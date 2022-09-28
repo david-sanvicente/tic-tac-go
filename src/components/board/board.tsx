@@ -6,21 +6,23 @@ import { BoardState } from '../../utils'
 type BoardProps = {
     state: BoardState
     size: number,
+    disabled?: boolean,
     onCellPressed: (index: number) => void
 }
 
-export default function Board({ state, size, onCellPressed }: BoardProps): ReactElement {
+export default function Board({ state, disabled, size, onCellPressed }: BoardProps): ReactElement {
     return (
         <View style={{
             width: size,
             height: size,
-            // backgroundColor: "green",
+            // backgroundColor: "#81007F",
             flexDirection: "row",
             flexWrap: "wrap"
         }}>
             {state.map((cell, idx) => {
                 return (
                     <TouchableOpacity
+                        disabled={cell !== null || disabled}
                         onPress={() =>
                             onCellPressed && onCellPressed(idx)
                         }
